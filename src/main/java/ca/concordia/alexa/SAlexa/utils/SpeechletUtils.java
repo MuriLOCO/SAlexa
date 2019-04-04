@@ -52,7 +52,7 @@ public class SpeechletUtils {
   }
   
   public static SpeechletResponse getHelpIntentResponse(Intent intent,Session session) {
-    String speechText = "Do you want me to send another challenge?";    
+    String speechText = "Need help?";    
 
     return getSimpleSpeechletResponse(speechText, speechText);
   }
